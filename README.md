@@ -2,7 +2,7 @@
 
 ## Overview
 
-ksacovid19 is an R package which shows covid19 cases in Saudi Arabia on country and city level with few additional stats functions. The data source: https://covid19.moh.gov.sa/
+ksacovid19 is an R package which shows covid19 cases in Saudi Arabia on country and city level with few additional stats functions. 
 
 ## Installation
 ```
@@ -46,4 +46,8 @@ cities_first()
 10 2020-03-19 00:00:00 محايل عسير  Muhayil Aseer         1      0         0      1
 
 ```
+
+## Data source
+
+The data is obtained from [The Saudi Ministry of Health](https://covid19.moh.gov.sa/)
 
