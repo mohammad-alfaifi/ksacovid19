@@ -53,7 +53,8 @@ country_cases <- function(){
 cities_first<- function(){
   ksacovid19::cities_cases() %>%
     group_by(.data$city) %>%
-    filter(.data$date == min(.data$date))
+    filter(.data$date == min(.data$date)) %>%
+    ungroup()
 
 }
 
