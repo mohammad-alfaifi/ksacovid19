@@ -12,12 +12,12 @@
   .ksacovid19_env <<- new.env(parent = emptyenv())
 }
 
-#'  covid19 by city
-#' @description  use this to view covid19 cases in each city in Saudi Arabia
-#' @return df, with cities covid19 cases
+#'  Covid19 cases in Saudi cities
+#' @description  use this to view covid19 cases in cities in Saudi Arabia
+#' @return data frame with cities covid19 cases
 #' @export
 #'
-cities_covid19 <- function(){
+cities_cases <- function(){
   if(is.null(.ksacovid19_env$data)){
     .clean_date()
   }else {
@@ -31,12 +31,12 @@ cities_covid19 <- function(){
 }
 
 #' KSA covid19 cases
-#' @description  use this to view the number of covid19 cases reported in Saudi arabia
-#' @return df, with daily reported cases
+#' @description  use this to view the number of Covid19 cases reported in Saudi arabia
+#' @return data frame with daily reported cases
 #' @export
 #'
-country_covid19 <- function(){
-  ksacovid19::cities_covid19() %>%
+country_cases <- function(){
+  ksacovid19::cities_cases() %>%
      group_by(.data$date) %>%
      summarise(
       confirmed = sum(.data$confirmed),
@@ -45,29 +45,31 @@ country_covid19 <- function(){
     )
 }
 
-#' first cases in cities
+#' data of first record case in Saudi cities
 #'@description This function returns cities with their first reported cases
-#' @return df with first reported cases in each city
+#' @return data frame with first reported cases in each city
 #' @export
 #'
-cities_covid19_first<- function(){
-  ksacovid19::cities_covid19() %>%
+cities_first<- function(){
+  ksacovid19::cities_cases() %>%
     group_by(.data$city) %>%
     filter(.data$date == min(.data$date))
 
 }
 
-#' Growth of covid 19 cases in Saudi Arabia
+#' Growth of Covid 19 cases in Saudi Arabia
 #' @param freqeuncy, weekly or monthly
 #' @description view the weekly or monthly number of covid19 cases in Saudi Arabia
-#' @return df, with either weekly or monthly % growth of cases
+#' @return data frame with either weekly or monthly % growth of cases
 #' @export
 #'
-country_covid19_growth <- function(freqeuncy = "weekly"){
+country_cases_growth <- function(freqeuncy = "weekly"){
 
   if(freqeuncy == "weekly") g_var <- "week" else g_var <- "month"
 
-    ksacovid19::country_covid19() %>%
+  group_var <- NULL
+
+    ksacovid19::country_cases() %>%
      mutate(
        week = week(.data$date),
        month = month(.data$date)
@@ -92,18 +94,20 @@ country_covid19_growth <- function(freqeuncy = "weekly"){
 
 
 
-#' Growth of covid 19 cases in Saudi cities
+#' Growth of Covid 19 cases in Saudi cities
 
 #' @param freqeuncy, weekly or monthly
 #' @description view the weekly or monthly number of covid19 cases in Saudi cities
-#' @return df, with either weekly or monthly % growth of cases in each city
+#' @return data frame with either weekly or monthly % growth of cases in each city
 #' @export
 #'
-cities_covid19_growth <- function(freqeuncy = "weekly"){
+cities_cases_growth <- function(freqeuncy = "weekly"){
 
   if(freqeuncy == "weekly") g_var <- "week" else g_var <- "month"
 
-  ksacovid19::cities_covid19() %>%
+  group_var <- NULL
+
+  ksacovid19::cities_cases() %>%
      mutate(
        week = lubridate::week(date),
        month = lubridate::month(date)
