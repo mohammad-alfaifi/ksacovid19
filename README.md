@@ -1,8 +1,8 @@
-# ksa_covid19
+# ksacovid19
 
 ## Overview
 
-ksa_covid19 is a package which allows exploration of covid19 cases in Saudi Arabia on country and city level with few additional stats functions. 
+ksa_covid19 is an R package which allows exploration of covid19 cases in Saudi Arabia on country and city level with few additional stats functions. 
 
 ## Installation
 ```
