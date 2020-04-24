@@ -74,5 +74,5 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 ```
 ## Data source
 
-The data is obtained from [The Saudi Ministry of Health](https://covid19.moh.gov.sa/)
+The COVID-19 data is obtained from [The Saudi Ministry of Health](https://covid19.moh.gov.sa/)
 
