@@ -55,7 +55,7 @@ country_cases <- function(){
 #'
 cities_first<- function(){
   ksacovid19::cities_cases() %>%
-    group_by(.data$city) %>%
+    group_by(.data$city_name) %>%
     filter(.data$date == min(.data$date)) %>%
     ungroup()
 
@@ -117,14 +117,14 @@ cities_cases_growth <- function(freqeuncy = "weekly"){
        month = lubridate::month(date)
        ) %>%
      rename(group_var := g_var) %>%
-     group_by(.data$group_var, .data$city, .data$city_eng) %>%
+     group_by(.data$group_var, .data$city_name, .data$city_eng) %>%
      summarise(
       confirmed = sum(.data$confirmed),
       deaths = sum(.data$deaths),
       recovered = sum(.data$recovered)
     ) %>%
      ungroup() %>%
-     group_by(.data$city_eng, .data$city) %>%
+     group_by(.data$city_eng, .data$city_name) %>%
      arrange(.data$group_var) %>%
      mutate(
       confirmed_growth = .data$confirmed/if_else(lag(.data$confirmed)==0, as.integer(NA),  lag(.data$confirmed)) -1,
