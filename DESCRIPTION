@@ -1,13 +1,14 @@
 Package: ksacovid19
 Type: Package
 Title: Covid19 Cases in Saudi Arabia
-Version: 0.1.0
+Version: 0.0.1
 Author: Mohammad Alfaifi
 Maintainer: The package maintainer <mohammad.faifi@gmail.com>
 Description: It provides number of  covid19 cases on country and city level with additional stats on these two levels. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 2.10)
 Imports: 
     dplyr,
     magrittr,
@@ -19,5 +20,7 @@ Imports:
     lubridate,
     readr,
     usethis,
-    rlang
+    rlang,
+    sf,
+    curl
 RoxygenNote: 7.0.2

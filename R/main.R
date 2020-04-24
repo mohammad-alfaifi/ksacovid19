@@ -6,6 +6,9 @@
 #' @importFrom readr read_rds
 #' @importFrom stringr str_remove_all str_replace_all
 #' @import dplyr rlang
+#' @importFrom sf st_sf st_read
+#' @importFrom usethis use_data use_data
+#' @importFrom curl has_internet
  NULL
 
 .onLoad <- function(...){
