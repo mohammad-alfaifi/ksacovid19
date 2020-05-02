@@ -9,7 +9,7 @@
                  outFields= "*",
                  orderByFields= "Reportdt asc",
                  resultOffset= 0,
-                 resultRecordCount= 1000,
+                 resultRecordCount= 100000,
                  cacheHint= "true"
   )
 
